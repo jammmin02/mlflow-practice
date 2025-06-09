@@ -1,0 +1,10 @@
+name: noise-classification-project
+
+conda_env: conda.yaml
+
+entry_points:
+  main:
+    parameters:
+      data_path: {type: str, default: "./data"}
+      n_trials: {type: int, default: 20}
+    command: "python run_optuna.py --data_path {data_path} --n_trials {n_trials}"
