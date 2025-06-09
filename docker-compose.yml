@@ -11,12 +11,9 @@ services:
 
   trainer:
     build:
-      context: ./trainer
+      context: .
     volumes:
-      - ./mlruns:/mlflow/mlruns
-      - ./data:/app/data
-      - ./outputs:/app/outputs
-      - ./trainer:/app
+      - .:/app  # 프로젝트 전체 root를 /app 으로 마운트
     depends_on:
       - mlflow_server
     working_dir: /app
