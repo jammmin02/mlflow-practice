@@ -1,0 +1,44 @@
+# 기본 파이썬 무시 파일
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+
+# 데이터셋 무시 (용량 큼)
+data/
+dataset/
+*.csv
+*.npy
+
+# 모델 가중치 무시
+outputs/
+models/
+*.pt
+*.onnx
+
+# MLflow 저장소 무시 (로컬 기록용)
+mlruns/
+mlartifacts/
+
+# 로그, 시각화 결과 무시
+logs/
+*.log
+*.png
+*.jpg
+*.html
+
+# 환경 파일 무시 (로컬 전용)
+.env
+*.conda
+*.ipynb_checkpoints/
+
+# Docker 빌드 결과물
+docker-compose.override.yml
+
+# VSCode 등 개발툴 설정 무시
+.vscode/
+.idea/
+
+# 기타
+.DS_Store
