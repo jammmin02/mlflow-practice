@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+
+  mlflow_server:
+    build:
+      context: ./mlflow_server
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./mlruns:/mlflow/mlruns
+    command: mlflow server --backend-store-uri sqlite:///mlflow/mlflow.db --default-artifact-root /mlflow/mlruns --host 0.0.0.0 --port 5000
+
+  trainer:
+    build:
+      context: ./trainer
+    volumes:
+      - ./mlruns:/mlflow/mlruns
+      - ./data:/app/data
+      - ./outputs:/app/outputs
+      - ./trainer:/app
+    depends_on:
+      - mlflow_server
+    working_dir: /app
+    command: python train.py
